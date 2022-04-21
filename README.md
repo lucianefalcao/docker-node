@@ -7,4 +7,5 @@ Extra: O projeto utiliza a técnica __Multistage Building__ para a otimização 
 ## Comandos para utilização
 
 ```cd node && npm install```
+
 ```docker-compose up -d```
