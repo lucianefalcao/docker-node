@@ -6,7 +6,8 @@ services:
     build:
       context: ./node
     container_name: app_node
-    command: dockerize -wait tcp://db_node:3306 -timeout 20s node index.js
+    entrypoint: dockerize -wait tcp://db_node:3306 -timeout 20s docker-entrypoint.sh
+    command: node index.js
     tty: true
     volumes:
       - ./node:/usr/src/app
@@ -19,6 +20,8 @@ services:
     build:
       context: ./nginx
     container_name: nginx_node
+    entrypoint: dockerize -wait tcp://app_node:3000 -timeout 20s /docker-entrypoint.sh
+    command: nginx -g 'daemon off;'
     tty: true
     networks:
       - nodenet
