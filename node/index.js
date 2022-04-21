@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
   const connection = mysql.createConnection(config)
 
-  const sql = "INSERT INTO people(name) values('Luciane');"
+  const sql = "INSERT INTO people(name) values('Nome qualquer');"
   connection.query(sql)
 
   connection.query('SELECT * FROM people', (err, response) => {
