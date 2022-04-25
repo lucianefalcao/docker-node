@@ -9,11 +9,8 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-FROM node:16-alpine
+COPY . .
 
-WORKDIR /usr/src/app
-
-RUN mkdir dockerize
-COPY --from=builder /usr/local/bin/dockerize /usr/local/bin/dockerize
+RUN npm install
 
 EXPOSE 3000
